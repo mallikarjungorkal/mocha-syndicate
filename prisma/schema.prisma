@@ -1,0 +1,90 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String       @id @default(cuid())
+  name          String
+  handle        String       @unique
+  avatarUrl     String
+  upiId         String
+  campus        String       // e.g. "Dr. AIT Bangalore"
+  isLeader      Boolean      @default(false)
+  winRate       Float?       // e.g. 78.4
+  maxDrawdown   Float?       // e.g. 6.2
+  skinInGame    Float?       // Leader pledge e.g. 5000.0
+  pledges       Pledge[]
+  ledSyndicates Syndicate[]  @relation("LeaderSyndicates")
+  createdAt     DateTime     @default(now())
+}
+
+model Syndicate {
+  id                String      @id @default(cuid())
+  title             String      // e.g. "Nvidia Q3 Earnings Breakout"
+  catalyst          String      // e.g. "NVDA Earnings"
+  assetSymbol       String      // e.g. "NVDA"
+  assetName         String      // e.g. "NVIDIA Corporation"
+  direction         String      // "LONG" or "SHORT"
+  leverage          Int         @default(10) // 10x
+  entryPrice        Float       // e.g. 140.00
+  targetPrice       Float       // e.g. 142.52 (+18% on 10x)
+  stopLossPrice     Float       // e.g. 138.60 (-10% circuit breaker on 10x)
+  circuitBreakerPct Float       @default(-10.0)
+  targetReturnPct   Float       @default(18.0)
+  minPledge         Float       @default(50.0)
+  leaderPledge      Float       @default(5000.0)
+  poolCap           Float       @default(50000.0)
+  currentPooled     Float       @default(0.0)
+  status            String      @default("OPEN") // "OPEN", "ACTIVE", "CLOSED"
+  leaderId          String
+  leader            User        @relation("LeaderSyndicates", fields: [leaderId], references: [id])
+  positions         Position[]
+  pledges           Pledge[]
+  createdAt         DateTime    @default(now())
+}
+
+model Pledge {
+  id            String     @id @default(cuid())
+  syndicateId   String
+  userId        String
+  amount        Float      // e.g. 100.0
+  upiUtr        String     // e.g. "UPI/389271/AXIS"
+  escrowStatus  String     @default("LOCKED") // "LOCKED", "RELEASED", "REFUNDED"
+  syndicate     Syndicate  @relation(fields: [syndicateId], references: [id])
+  user          User       @relation(fields: [userId], references: [id])
+  createdAt     DateTime   @default(now())
+}
+
+model Position {
+  id                String      @id @default(cuid())
+  syndicateId       String
+  status            String      @default("ACTIVE") // "ACTIVE", "TRIGGERED_TP", "TRIGGERED_CB", "SETTLED"
+  currentPrice      Float
+  unrealizedPnlPct   Float       @default(0.0)
+  exitPrice         Float?
+  exitReason        String?     // "TARGET_PROFIT", "CIRCUIT_BREAKER", "MANUAL"
+  settledAt         DateTime?
+  syndicate         Syndicate   @relation(fields: [syndicateId], references: [id])
+  settlements       Settlement[]
+  createdAt         DateTime    @default(now())
+}
+
+model Settlement {
+  id                String    @id @default(cuid())
+  positionId        String
+  userId            String
+  initialPledge     Float     // e.g. 100.0
+  grossPayout       Float     // e.g. 118.0 or 90.0
+  leaderFee         Float     // 5% on net profit
+  protocolFee       Float     // 0.05% on notional
+  netPayout         Float     // e.g. 117.00 or 89.95
+  upiRefundUtr      String
+  settlementTimeSec Float     @default(3.8) // <4.2s benchmark
+  createdAt         DateTime  @default(now())
+  position          Position  @relation(fields: [positionId], references: [id])
+}
