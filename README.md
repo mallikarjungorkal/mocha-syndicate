@@ -81,7 +81,7 @@ npx prisma db seed
 npm run dev
 ```
 
-Open **[http://localhost:3000](http://localhost:3000)** in your browser:
+Open **[http://localhost:3000]((https://mocha-syndicate.vercel.app/))** in your browser:
 - `/` — **Syndicate Discovery Hub & Active Trade Room**: Test 1-tap UPI pledges, real-time chart ticks, circuit breaker triggers, and simulated settlement. Over 20 live syndicates with search, filter pills, trader names, campuses, and follower metrics.
 - `/simulator` — **Macroeconomic Growth Simulator**: Native interactive modeling of protocol take-rates, leader cuts, K-factors, trust architecture impact, and dual-scenario 12-month projections.
 - `/campus` — **Campus League**: Live inter-collegiate leaderboard across top cohorts (IIT Bombay, BITS Pilani, RVCE, IIT Madras).
@@ -104,7 +104,7 @@ python -m streamlit run app.py
 npm run simulator
 ```
 
-Open **[http://localhost:8501](http://localhost:8501)** to access:
+Open **([https://mocha-syndicate.vercel.app/])** to access:
 - **Interactive Monte-Carlo Parameters**: Protocol take-rate sliders, leader cuts, and viral multipliers.
 - **Dark Theme Plotly Analytics**: 12-month cumulative volume, annual fee projections, and trader churn sensitivity curves.
 - **Campus Vault Directory**: Active vaults for `@namith_quant`, `@mallikarjun_alpha`, and `@macro_pruthvi`.
@@ -128,6 +128,12 @@ Open **[http://localhost:8501](http://localhost:8501)** to access:
 - **Lead Architect & Full-Stack**: TradeX Labs Team
 - **Product & Quantitative Modeling**: TradeX Labs Quantitative Research
 - **Strategic Focus**: Growth & Monetization Strategy
+
+- **Team Members**
+- 1.Namith DR
+- 2.Mallikarjun
+- 3.Priyanka Bharath Sutar
+- 4.Pruthvi Prakash Rao
 
 ---
 
