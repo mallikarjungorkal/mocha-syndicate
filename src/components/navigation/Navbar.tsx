@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Shield, Sparkles, Wallet, Users, Flame, BarChart3, Scale, TrendingUp } from "lucide-react";
+import { Shield, Sparkles, Wallet, Users, Flame, BarChart3, Scale, TrendingUp, Trophy } from "lucide-react";
+import { useWallet } from "@/context/WalletContext";
 
 export function Navbar() {
   const pathname = usePathname();
+  const { availableBalance, setIsWalletOpen } = useWallet();
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-[#1E293B] bg-[#070A11]/90 backdrop-blur-md">
@@ -64,6 +66,17 @@ export function Navbar() {
             Strategy Benchmark
           </Link>
           <Link
+            href="/leaderboard"
+            className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+              pathname === "/leaderboard"
+                ? "bg-[#0E1424] text-[#FF914D] border border-[#FF914D]/30"
+                : "text-[#94A3B8] hover:text-[#FF914D] hover:bg-[#0E1424]/60"
+            }`}
+          >
+            <Trophy className="h-3 w-3 text-[#FF914D]" />
+            Leaderboard
+          </Link>
+          <Link
             href="/portfolio"
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
               pathname === "/portfolio"
@@ -82,15 +95,24 @@ export function Navbar() {
             <span className="font-semibold">-10% Hard Stop Active</span>
           </div>
 
-          <div className="flex items-center gap-2 rounded-xl bg-[#0E1424] px-3 py-1.5 border border-[#1E293B]">
+          {/* Interactive Wallet Badge */}
+          <button
+            type="button"
+            onClick={() => setIsWalletOpen(true)}
+            className="flex items-center gap-2 rounded-xl bg-[#0E1424] px-3 py-1.5 border border-[#1E293B] hover:border-[#67E5EE]/50 hover:bg-[#141C30] transition-all cursor-pointer shadow-sm group"
+            title="Open Mocha Vault Wallet"
+          >
             <div className="h-2 w-2 rounded-full bg-[#48D297] animate-pulse" />
             <div className="text-right">
-              <p className="text-[11px] font-medium text-white">Priyanka S.</p>
-              <p className="text-[10px] text-[#94A3B8] flex items-center gap-1 justify-end">
-                <Wallet className="h-2.5 w-2.5 text-[#67E5EE]" /> ₹1,500.00
+              <p className="text-[11px] font-medium text-white group-hover:text-[#67E5EE] transition-colors">
+                Priyanka S.
+              </p>
+              <p className="text-[10px] text-[#94A3B8] flex items-center gap-1 justify-end font-mono">
+                <Wallet className="h-2.5 w-2.5 text-[#67E5EE]" />
+                ₹{availableBalance.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </p>
             </div>
-          </div>
+          </button>
         </div>
       </div>
     </header>

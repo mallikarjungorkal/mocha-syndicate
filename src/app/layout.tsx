@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navigation/Navbar";
 import { JudgeDock } from "@/components/simulation/JudgeDock";
+import { WalletProvider } from "@/context/WalletContext";
+import { WalletModal } from "@/components/wallet/WalletModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${inter.className} min-h-screen bg-[#070A11] text-[#F8FAFC] antialiased`}>
-        <Navbar />
-        <main className="pb-36">{children}</main>
-        <JudgeDock />
+        <WalletProvider>
+          <Navbar />
+          <main className="pb-36">{children}</main>
+          <WalletModal />
+          <JudgeDock />
+        </WalletProvider>
       </body>
     </html>
   );
