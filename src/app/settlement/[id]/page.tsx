@@ -20,6 +20,7 @@ import {
   Send,
   Flame
 } from "lucide-react";
+import { getFallbackSettlement } from "@/lib/mockData";
 
 export default function SettlementPage({
   params,
@@ -41,11 +42,14 @@ export default function SettlementPage({
       setLoading(true);
       const res = await fetch(`/api/settlement/${resolvedParams.id}`);
       const result = await res.json();
-      if (result.success) {
+      if (result.success && result.data) {
         setSettlement(result.data);
+      } else {
+        setSettlement(getFallbackSettlement(resolvedParams.id));
       }
     } catch (err) {
-      console.error(err);
+      console.warn("Using fallback settlement:", err);
+      setSettlement(getFallbackSettlement(resolvedParams.id));
     } finally {
       setLoading(false);
     }

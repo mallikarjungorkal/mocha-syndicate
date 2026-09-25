@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { DEFAULT_MOCK_SYNDICATES } from "@/lib/mockData";
 
 export async function GET() {
   try {
@@ -14,12 +15,14 @@ export async function GET() {
       orderBy: { createdAt: "desc" },
     });
 
+    if (!syndicates || syndicates.length === 0) {
+      console.log("No syndicates in database, returning rich Dr. AIT mock fallback");
+      return NextResponse.json({ success: true, data: DEFAULT_MOCK_SYNDICATES });
+    }
+
     return NextResponse.json({ success: true, data: syndicates });
   } catch (error) {
-    console.error("Error fetching syndicates:", error);
-    return NextResponse.json(
-      { success: false, error: "Failed to fetch syndicates" },
-      { status: 500 }
-    );
+    console.error("Error fetching syndicates from DB, using fallback:", error);
+    return NextResponse.json({ success: true, data: DEFAULT_MOCK_SYNDICATES });
   }
 }

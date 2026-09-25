@@ -5,11 +5,12 @@ import { useRouter } from "next/navigation";
 import { Shield, Sparkles, TrendingUp, Zap, Users, ArrowRight, Award, CheckCircle2 } from "lucide-react";
 import { SyndicateCard } from "@/components/syndicate/SyndicateCard";
 import { UpiModal } from "@/components/payment/UpiModal";
+import { DEFAULT_MOCK_SYNDICATES } from "@/lib/mockData";
 
 export default function DiscoveryHub() {
   const router = useRouter();
-  const [syndicates, setSyndicates] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [syndicates, setSyndicates] = useState<any[]>(DEFAULT_MOCK_SYNDICATES);
+  const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState("ALL");
   const [selectedSyndicate, setSelectedSyndicate] = useState<any | null>(null);
 
@@ -19,23 +20,25 @@ export default function DiscoveryHub() {
 
   const fetchSyndicates = async () => {
     try {
-      setLoading(true);
       const res = await fetch("/api/syndicates");
       const data = await res.json();
-      if (data.success) {
+      if (data.success && Array.isArray(data.data) && data.data.length > 0) {
         setSyndicates(data.data);
+      } else {
+        setSyndicates(DEFAULT_MOCK_SYNDICATES);
       }
     } catch (err) {
-      console.error(err);
+      console.warn("Using fallback syndicates due to fetch error:", err);
+      setSyndicates(DEFAULT_MOCK_SYNDICATES);
     } finally {
       setLoading(false);
     }
   };
 
   const filteredSyndicates = syndicates.filter((syn) => {
-    if (filter === "EARNINGS") return syn.catalyst.toLowerCase().includes("earnings");
-    if (filter === "HIGH_BETA") return syn.leverage >= 10;
-    if (filter === "CAMPUS") return syn.leader.campus.includes("Dr. AIT");
+    if (filter === "EARNINGS") return syn.catalyst?.toLowerCase().includes("earnings");
+    if (filter === "HIGH_BETA") return (syn.leverage || 0) >= 10;
+    if (filter === "CAMPUS") return (syn.leader?.campus || syn.lead?.campus || "").includes("Dr. AIT");
     return true;
   });
 

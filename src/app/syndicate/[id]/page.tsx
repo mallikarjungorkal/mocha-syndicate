@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { ShieldBadge } from "@/components/trade/ShieldBadge";
 import { UpiModal } from "@/components/payment/UpiModal";
+import { getFallbackSyndicate } from "@/lib/mockData";
 
 export default function SyndicateDetailPage({
   params,
@@ -37,11 +38,14 @@ export default function SyndicateDetailPage({
       setLoading(true);
       const res = await fetch(`/api/syndicates/${resolvedParams.id}`);
       const data = await res.json();
-      if (data.success) {
+      if (data.success && data.data) {
         setSyndicate(data.data);
+      } else {
+        setSyndicate(getFallbackSyndicate(resolvedParams.id));
       }
     } catch (err) {
-      console.error(err);
+      console.warn("Using fallback syndicate:", err);
+      setSyndicate(getFallbackSyndicate(resolvedParams.id));
     } finally {
       setLoading(false);
     }

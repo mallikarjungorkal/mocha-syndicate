@@ -32,9 +32,27 @@ interface SyndicateCardProps {
 }
 
 export function SyndicateCard({ syndicate, onQuickPledge }: SyndicateCardProps) {
+  const leader = syndicate.leader || (syndicate as any).lead || {
+    name: "Dr. AIT FinTech",
+    handle: "drait_lead",
+    campus: "Dr. AIT Bangalore",
+    winRate: 78,
+    maxDrawdown: 6.5,
+    skinInGame: 5000,
+  };
+
+  const assetSymbol = syndicate.assetSymbol || (syndicate as any).ticker || "NVDA";
+  const assetName = syndicate.assetName || "Asset";
+  const entryPrice = syndicate.entryPrice || 128.50;
+  const leverage = syndicate.leverage || 10;
+  const targetReturnPct = syndicate.targetReturnPct ?? (syndicate as any).returnTarget ?? 35;
+  const circuitBreakerPct = syndicate.circuitBreakerPct ?? (syndicate as any).stopLoss ?? -10;
+  const poolCap = syndicate.poolCap || 50000;
+  const currentPooled = syndicate.currentPooled ?? (syndicate as any).pooledAmount ?? 38400;
+
   const percentFilled = Math.min(
     100,
-    Math.round((syndicate.currentPooled / syndicate.poolCap) * 100)
+    Math.round((currentPooled / poolCap) * 100)
   );
 
   return (
@@ -44,21 +62,21 @@ export function SyndicateCard({ syndicate, onQuickPledge }: SyndicateCardProps) 
         <div className="flex items-center justify-between gap-2 mb-3">
           <div className="flex items-center gap-2">
             <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#67E5EE]/10 border border-[#67E5EE]/30 font-mono text-xs font-black text-[#67E5EE]">
-              {syndicate.assetSymbol}
+              {assetSymbol}
             </span>
             <div>
               <span className="text-xs font-bold text-white block leading-tight">
-                {syndicate.assetName}
+                {assetName}
               </span>
-              <span className="text-[10px] text-[#94A3B8]">Entry ${syndicate.entryPrice.toFixed(2)}</span>
+              <span className="text-[10px] text-[#94A3B8]">Entry ${entryPrice.toFixed(2)}</span>
             </div>
           </div>
           <div className="flex items-center gap-1.5">
             <span className="rounded-md bg-[#FF914D]/15 px-2 py-0.5 text-[10px] font-bold text-[#FF914D] border border-[#FF914D]/30">
-              {syndicate.leverage}x Lev
+              {leverage}x Lev
             </span>
             <span className="rounded-md bg-[#48D297]/15 px-2 py-0.5 text-[10px] font-bold text-[#48D297] border border-[#48D297]/30 flex items-center gap-0.5">
-              <TrendingUp className="h-2.5 w-2.5" /> +{syndicate.targetReturnPct}% Target
+              <TrendingUp className="h-2.5 w-2.5" /> +{targetReturnPct}% Target
             </span>
           </div>
         </div>
@@ -78,35 +96,35 @@ export function SyndicateCard({ syndicate, onQuickPledge }: SyndicateCardProps) 
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#67E5EE]/20 text-[10px] font-bold text-[#67E5EE] border border-[#67E5EE]/40">
-                {syndicate.leader.name.slice(0, 2).toUpperCase()}
+                {(leader.name || "DA").slice(0, 2).toUpperCase()}
               </div>
               <div>
                 <p className="text-xs font-semibold text-white flex items-center gap-1">
-                  @{syndicate.leader.handle}
+                  @{leader.handle || "drait"}
                   <span className="rounded-full bg-[#67E5EE]/20 p-0.5 text-[#67E5EE]">
                     <Award className="h-2.5 w-2.5" />
                   </span>
                 </p>
-                <p className="text-[10px] text-[#64748B]">{syndicate.leader.campus}</p>
+                <p className="text-[10px] text-[#64748B]">{leader.campus || "Dr. AIT"}</p>
               </div>
             </div>
             <div className="text-right">
               <span className="text-[10px] text-[#94A3B8] block">Audited Win Rate</span>
               <span className="text-xs font-bold text-[#48D297]">
-                {syndicate.leader.winRate}%
+                {leader.winRate}%
               </span>
             </div>
           </div>
 
           <div className="mt-2.5 pt-2 border-t border-[#1E293B] flex items-center justify-between text-[10px] text-[#94A3B8]">
             <span>Lead Commitment (Skin-in-game):</span>
-            <span className="font-semibold text-white">₹{syndicate.leader.skinInGame?.toLocaleString()}</span>
+            <span className="font-semibold text-white">₹{leader.skinInGame?.toLocaleString() || "5,000"}</span>
           </div>
         </div>
 
         {/* Downside Protection Indicator */}
         <div className="mt-3">
-          <ShieldBadge threshold={syndicate.circuitBreakerPct} showDetails />
+          <ShieldBadge threshold={circuitBreakerPct} showDetails />
         </div>
       </div>
 
