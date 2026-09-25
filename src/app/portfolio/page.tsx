@@ -56,7 +56,7 @@ export default function PortfolioPage() {
         <div>
           <div className="inline-flex items-center gap-2 rounded-full bg-[#67E5EE]/10 px-3 py-0.5 text-xs font-semibold text-[#67E5EE] border border-[#67E5EE]/30 mb-2">
             <Sparkles className="h-3.5 w-3.5" />
-            <span>Dr. AIT Trader Ledger</span>
+            <span>Verified Trader Ledger</span>
           </div>
           <h1 className="text-xl sm:text-2xl font-black text-white">
             User Portfolio & Protection Ledger
@@ -220,7 +220,7 @@ export default function PortfolioPage() {
                         {s.position?.syndicate?.title || "TSLA Robotaxi Milestone"}
                       </div>
                       <div className="text-[10px] text-[#94A3B8]">
-                        {s.position?.syndicate?.assetSymbol || "TSLA"} ({s.position?.syndicate?.leverage || 10}x) · @{s.position?.syndicate?.leader?.handle || "drait_lead"}
+                        {s.position?.syndicate?.assetSymbol || "TSLA"} ({s.position?.syndicate?.leverage || 10}x) · @{s.position?.syndicate?.leader?.handle || "arjun_quant"}
                       </div>
                     </td>
                     <td className="py-3.5 px-4">
@@ -241,7 +241,7 @@ export default function PortfolioPage() {
                       ₹{(s.netPayout || 90).toFixed(2)}
                     </td>
                     <td className="py-3.5 px-4 font-mono text-[11px] text-[#94A3B8]">
-                      {s.upiRefundUtr || "UPI/DRAIT/789102/SHIELD"}
+                      {s.upiRefundUtr || "UPI/MOCHA/789102/SHIELD"}
                     </td>
                     <td className="py-3.5 px-4 text-right">
                       <Link

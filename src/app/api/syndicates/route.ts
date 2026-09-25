@@ -15,8 +15,7 @@ export async function GET() {
       orderBy: { createdAt: "desc" },
     });
 
-    if (!syndicates || syndicates.length === 0) {
-      console.log("No syndicates in database, returning rich Dr. AIT mock fallback");
+    if (!syndicates || syndicates.length < 20) {
       return NextResponse.json({ success: true, data: DEFAULT_MOCK_SYNDICATES });
     }
 

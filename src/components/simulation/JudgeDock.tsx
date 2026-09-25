@@ -121,9 +121,9 @@ export function JudgeDock({ activePositionId, onPriceUpdate }: JudgeDockProps) {
               </span>
               <div>
                 <span className="text-xs font-black tracking-wide text-white uppercase flex items-center gap-1.5">
-                  Judge Demo Control Panel
+                  Demo Simulation Control Panel
                   <span className="rounded bg-[#67E5EE]/20 px-1.5 py-0.2 text-[9px] text-[#67E5EE] font-mono">
-                    Track 2 Tooling
+                    Live Engine
                   </span>
                 </span>
               </div>
@@ -141,7 +141,7 @@ export function JudgeDock({ activePositionId, onPriceUpdate }: JudgeDockProps) {
                 type="button"
                 onClick={() => setShowAssumptions(true)}
                 className="flex items-center gap-1 rounded-lg border border-[#1E293B] bg-[#0E1424] px-2 py-1 text-[11px] font-semibold text-[#67E5EE] hover:bg-[#1E293B] transition-colors"
-                title="View mathematical formulas and Track 2 assumptions"
+                title="View mathematical formulas and protocol assumptions"
               >
                 <Calculator className="h-3 w-3" />
                 <span>Assumptions</span>
@@ -236,7 +236,7 @@ export function JudgeDock({ activePositionId, onPriceUpdate }: JudgeDockProps) {
                   <Calculator className="h-4 w-4" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-white">Mathematical Models & Track 2 Assumptions</h3>
+                  <h3 className="text-base font-bold text-white">Mathematical Models & Protocol Assumptions</h3>
                   <p className="text-xs text-[#94A3B8]">Official formulas governing Mocha Syndicate prototype</p>
                 </div>
               </div>

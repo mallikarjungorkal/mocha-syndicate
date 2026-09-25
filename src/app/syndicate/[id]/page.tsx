@@ -142,7 +142,7 @@ export default function SyndicateDetailPage({
               Audited Lead Credentials
             </h3>
             <span className="rounded-full bg-[#48D297]/15 px-2 py-0.5 text-[10px] font-bold text-[#48D297] border border-[#48D297]/30">
-              Dr. AIT Verified
+              Campus Verified Lead
             </span>
           </div>
 

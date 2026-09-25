@@ -7,9 +7,9 @@ import { JudgeDock } from "@/components/simulation/JudgeDock";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Mocha Syndicate | TradeX Labs",
+  title: "Mocha Syndicate | MarketSphere Catalyst Trading",
   description:
-    "Re-engineering Retail Leverage into Trust-Anchored Micro-Syndicates on MochaTrade. Dr. AIT MarketSphere Track 2.",
+    "Re-engineering Retail Leverage into Trust-Anchored Micro-Syndicates on MochaTrade.",
 };
 
 export default function RootLayout({

@@ -61,7 +61,7 @@ export default function BenchmarkComparisonPage() {
       <div className="relative overflow-hidden rounded-3xl border border-[#1E293B] bg-gradient-to-r from-[#0E1424] via-[#070A11] to-[#070A11] p-6 sm:p-10 shadow-2xl">
         <div className="inline-flex items-center gap-2 rounded-full bg-[#67E5EE]/10 px-3.5 py-1 text-xs font-semibold text-[#67E5EE] border border-[#67E5EE]/30 mb-3">
           <Sparkles className="h-3.5 w-3.5" />
-          <span>Strategic Evaluation · Track 2 Rubric Benchmark</span>
+          <span>Strategic Evaluation · Business Model Benchmark</span>
         </div>
         <h1 className="text-2xl sm:text-3xl font-black text-white">
           Scenario Comparison: Incumbent vs. Mocha Syndicate
@@ -171,7 +171,7 @@ export default function BenchmarkComparisonPage() {
             <Award className="h-4 w-4 text-[#67E5EE]" />
             Side-by-Side Rubric Benchmark Matrix
           </h3>
-          <span className="text-xs text-[#67E5EE] font-mono">Track 2 Deliverable</span>
+          <span className="text-xs text-[#67E5EE] font-mono">Strategic Deliverable</span>
         </div>
 
         <div className="overflow-x-auto">

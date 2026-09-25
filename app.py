@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 # PAGE SETUP & PREMIUM MOCHATRADE DARK-COFFEE THEME
 # ---------------------------------------------------------
 st.set_page_config(
-    page_title="TradeX Labs | MochaTrade (Dr. AIT Edition)",
+    page_title="TradeX Labs | MochaTrade Macro Simulator",
     page_icon="☕",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -181,7 +181,7 @@ def navigate_to(page, leader=None):
 # ---------------------------------------------------------
 with st.sidebar:
     st.markdown("### ⚙️ Simulation Engine")
-    st.caption("Dr. AIT Macroeconomic Model · Track 2")
+    st.caption("MochaTrade Macroeconomic Growth Model")
     
     with st.expander("💳 1. Pricing & Take-Rate", expanded=True):
         fee_rate = st.slider("Blended Trading Fee (%)", min_value=0.02, max_value=0.50, value=0.05, step=0.01) / 100
@@ -191,7 +191,7 @@ with st.sidebar:
     with st.expander("🌱 2. Non-Paid Growth Channel", expanded=True):
         organic_baseline = st.number_input("Monthly Organic Visitors", value=3500, step=250)
         k_factor = st.slider("Viral Loop (K-Factor)", min_value=0.0, max_value=0.60, value=0.28, step=0.02,
-                             help="Number of active referrals generated per student trader across Dr. AIT campus")
+                             help="Number of active referrals generated per student trader across campus syndicates")
         content_mom_growth = st.slider("Community Content MoM (%)", 0, 20, 8) / 100
 
     with st.expander("🔒 3. Trust Architecture Toggles", expanded=True):
@@ -401,17 +401,17 @@ elif st.session_state.view_mode == "syndicates_list":
         if st.button("← Back"):
             navigate_to("main")
     with b_col2:
-        st.markdown("<h3 style='margin:0;'>Dr. AIT Syndicate Protocol Directory</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='margin:0;'>MochaTrade Campus Syndicate Directory</h3>", unsafe_allow_html=True)
         st.caption("Select a verified lead trader to inspect algorithmic allocation and performance metrics.")
 
     st.markdown("<br>", unsafe_allow_html=True)
-    search_query = st.text_input("🔍 Search leaders by handle, strategy, or campus cohort:", placeholder="e.g. drait, Satoshi, Arbitrage")
+    search_query = st.text_input("🔍 Search leaders by handle, strategy, or campus cohort:", placeholder="e.g. iitb, Satoshi, Arbitrage")
     
     leaders = [
-        {"name": "Namith DR", "handle": "@drait_lead", "location": "Dr. AIT Bangalore (CS)", "followers": 4120, "aum": f"{c_symbol}{(4200000 if currency=='INR (₹)' else 50000):,.0f}", "roi": "+78.4%", "style": "Nvidia Earnings Momentum"},
-        {"name": "Mallikarjun", "handle": "@drait_quant", "location": "Dr. AIT Alumni", "followers": 8940, "aum": f"{c_symbol}{(9800000 if currency=='INR (₹)' else 118000):,.0f}", "roi": "+81.2%", "style": "Cross-DEX Arbitrage"},
-        {"name": "Pruthvi Rao", "handle": "@macro_pruthvi", "location": "Dr. AIT FinTech", "followers": 2830, "aum": f"{c_symbol}{(3500000 if currency=='INR (₹)' else 42000):,.0f}", "roi": "+74.5%", "style": "Tesla Robotaxi Macro"},
-        {"name": "Dr. AIT Quant Node", "handle": "@drait_guru", "location": "Dr. AIT Hostel Block 1", "followers": 6190, "aum": f"{c_symbol}{(5600000 if currency=='INR (₹)' else 68000):,.0f}", "roi": "+76.8%", "style": "High-Frequency Liquidity"}
+        {"name": "Namith DR", "handle": "@namith_quant", "location": "IIT Bombay (CS)", "followers": 4120, "aum": f"{c_symbol}{(4200000 if currency=='INR (₹)' else 50000):,.0f}", "roi": "+78.4%", "style": "Nvidia Earnings Momentum"},
+        {"name": "Mallikarjun", "handle": "@mallikarjun_alpha", "location": "BITS Pilani Alumni", "followers": 8940, "aum": f"{c_symbol}{(9800000 if currency=='INR (₹)' else 118000):,.0f}", "roi": "+81.2%", "style": "Cross-DEX Arbitrage"},
+        {"name": "Pruthvi Rao", "handle": "@macro_pruthvi", "location": "RVCE FinTech Society", "followers": 2830, "aum": f"{c_symbol}{(3500000 if currency=='INR (₹)' else 42000):,.0f}", "roi": "+74.5%", "style": "Tesla Robotaxi Macro"},
+        {"name": "Campus Quant Node", "handle": "@campus_quant", "location": "IIT Madras Quant Club", "followers": 6190, "aum": f"{c_symbol}{(5600000 if currency=='INR (₹)' else 68000):,.0f}", "roi": "+76.8%", "style": "High-Frequency Liquidity"}
     ]
     
     filtered_leaders = [l for l in leaders if search_query.lower() in l['name'].lower() or search_query.lower() in l['location'].lower() or search_query.lower() in l['style'].lower() or search_query.lower() in l['handle'].lower()]

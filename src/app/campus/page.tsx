@@ -9,21 +9,22 @@ import {
   Shield, 
   Share2, 
   ArrowUpRight,
-  Sparkles
+  Sparkles,
+  GraduationCap
 } from "lucide-react";
 
 export default function CampusPage() {
-  const hostels = [
-    { name: "Dr. AIT Boys Hostel (Block 1)", members: 142, volume: "₹3,42,000", winRate: "79.1%", rank: 1 },
-    { name: "Dr. AIT Girls Hostel (Block 2)", members: 98, volume: "₹2,18,500", winRate: "75.4%", rank: 2 },
-    { name: "Dr. AIT PG Scholars Hostel", members: 74, volume: "₹1,85,000", winRate: "73.2%", rank: 3 },
-    { name: "Dr. AIT FinTech & Coding Club", members: 210, volume: "₹5,60,000", winRate: "81.0%", rank: "Elite" },
+  const colleges = [
+    { name: "IIT Bombay FinTech Guild", members: 340, volume: "₹14,20,000", winRate: "82.4%", rank: 1 },
+    { name: "BITS Pilani Quant Society", members: 285, volume: "₹11,80,000", winRate: "79.8%", rank: 2 },
+    { name: "RVCE Bengaluru Trading Club", members: 210, volume: "₹8,45,000", winRate: "78.2%", rank: 3 },
+    { name: "IIT Madras Algo League", members: 260, volume: "₹10,60,000", winRate: "81.0%", rank: "Elite" },
   ];
 
   const topLeads = [
-    { name: "Namith DR", handle: "drait_lead", campus: "Dr. AIT (CS)", winRate: "78.4%", cut: "₹18,400 earned", badge: "Lead Quant" },
-    { name: "Mallikarjun", handle: "drait_quant", campus: "Dr. AIT Alumni", winRate: "81.2%", cut: "₹32,100 earned", badge: "Smart Contract Lead" },
-    { name: "Pruthvi Rao", handle: "macro_pruthvi", campus: "Dr. AIT FinTech", winRate: "74.5%", cut: "₹11,200 earned", badge: "Risk Architect" },
+    { name: "Arjun Rao", handle: "arjun_alpha", campus: "IIT Bombay", winRate: "82.0%", cut: "₹28,400 earned", badge: "Lead Quant" },
+    { name: "Kavya Sharma", handle: "kavya_quant", campus: "BITS Pilani", winRate: "76.0%", cut: "₹19,100 earned", badge: "Momentum Lead" },
+    { name: "Rohan Deshmukh", handle: "rohan_trades", campus: "RVCE Bengaluru", winRate: "79.0%", cut: "₹15,200 earned", badge: "Macro Specialist" },
   ];
 
   return (
@@ -33,13 +34,13 @@ export default function CampusPage() {
         <div className="max-w-2xl space-y-3">
           <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FF914D]/15 px-3 py-1 text-xs font-bold text-[#FF914D] border border-[#FF914D]/30">
             <Flame className="h-3.5 w-3.5" />
-            <span>Pillar 3: Local Campus Anchor Strategy</span>
+            <span>Campus Anchor Strategy</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-white">
-            Dr. AIT Campus Syndicate League
+            Inter-Collegiate Campus Syndicate League
           </h1>
           <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed">
-            Turning local peer accountability into an organic trust engine. Engineering students and finance clubs at Dr. Ambedkar Institute of Technology form micro-syndicates with audited win rates, eliminating predatory Telegram signals through hyper-local reputation.
+            Turning peer accountability into an organic trust engine. Engineering students and finance clubs from India&apos;s leading institutions form micro-syndicates with audited win rates, eliminating predatory Telegram signals through campus reputation.
           </p>
         </div>
       </div>
@@ -50,7 +51,7 @@ export default function CampusPage() {
           <span className="text-[10px] text-[#67E5EE] font-bold uppercase tracking-wider block">Loop 01</span>
           <h3 className="text-sm font-bold text-white">Negative-CAC Distribution</h3>
           <p className="text-xs text-[#94A3B8] leading-relaxed">
-            Syndicate leads earn a 5% performance cut on net profit, incentivizing organic sharing across Dr. AIT WhatsApp and Discord groups without paid ads.
+            Syndicate leads earn a 5% performance cut on net profit, incentivizing organic sharing across student communities without paid ads.
           </p>
         </div>
 
@@ -58,25 +59,25 @@ export default function CampusPage() {
           <span className="text-[10px] text-[#FF914D] font-bold uppercase tracking-wider block">Loop 02</span>
           <h3 className="text-sm font-bold text-white">Mandatory Skin-in-the-Game</h3>
           <p className="text-xs text-[#94A3B8] leading-relaxed">
-            Leaders must commit ₹3,500–₹10,000 personal capital into the smart escrow before opens, aligning lead incentives with follower capital preservation.
+            Leaders must commit personal capital into the smart escrow before opens, aligning lead incentives with follower capital preservation.
           </p>
         </div>
 
         <div className="rounded-2xl border border-[#1E293B] bg-[#0E1424] p-5 space-y-2">
           <span className="text-[10px] text-[#48D297] font-bold uppercase tracking-wider block">Loop 03</span>
-          <h3 className="text-sm font-bold text-white">Hostel Leaderboards</h3>
+          <h3 className="text-sm font-bold text-white">Campus Leaderboards</h3>
           <p className="text-xs text-[#94A3B8] leading-relaxed">
-            Gamified campus league tables track aggregate win rates and capital preserved, transforming investing into a social team sport across Dr. AIT hostel blocks.
+            Gamified league tables track aggregate win rates and capital preserved, transforming investing into a social team sport across premier colleges.
           </p>
         </div>
       </div>
 
-      {/* Campus Hostel Rankings Table */}
+      {/* Campus Rankings Table */}
       <div className="rounded-2xl border border-[#1E293B] bg-[#0E1424] overflow-hidden shadow-xl">
         <div className="p-5 border-b border-[#1E293B] flex items-center justify-between">
           <h3 className="text-sm font-bold text-white flex items-center gap-2">
             <Award className="h-4 w-4 text-[#FF914D]" />
-            Dr. AIT Campus Cohort Rankings
+            National Campus Rankings
           </h3>
           <span className="text-xs text-[#94A3B8]">Season 1 Live</span>
         </div>
@@ -85,7 +86,7 @@ export default function CampusPage() {
           <table className="w-full text-left text-xs">
             <thead className="bg-[#070A11] text-[#94A3B8] border-b border-[#1E293B]">
               <tr>
-                <th className="py-3 px-4">Rank / Hostel Cohort</th>
+                <th className="py-3 px-4">Rank / Campus Guild</th>
                 <th className="py-3 px-4">Active Members</th>
                 <th className="py-3 px-4">Pooled Volume</th>
                 <th className="py-3 px-4">Audited Win Rate</th>
@@ -93,7 +94,7 @@ export default function CampusPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-[#1E293B] text-white">
-              {hostels.map((h, i) => (
+              {colleges.map((h, i) => (
                 <tr key={i} className="hover:bg-[#070A11]/40 transition-colors">
                   <td className="py-3.5 px-4 font-bold flex items-center gap-2">
                     <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#1E293B] text-[10px] font-mono text-[#67E5EE]">
@@ -123,7 +124,7 @@ export default function CampusPage() {
       <div className="space-y-4">
         <h3 className="text-sm font-bold text-white flex items-center gap-2">
           <Users className="h-4 w-4 text-[#67E5EE]" />
-          Verified Dr. AIT Lead Traders
+          Verified Student Lead Traders
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

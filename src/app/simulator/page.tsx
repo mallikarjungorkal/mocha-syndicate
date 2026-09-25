@@ -50,10 +50,6 @@ export default function GrowthSimulatorPage() {
   // Selected chart metric: "Revenue" | "Volume" | "Traders"
   const [activeMetric, setActiveMetric] = useState<"Revenue" | "Volume" | "Traders">("Revenue");
 
-  // Selected Dr. AIT Syndicate leader for vault inspection modal
-  const [selectedLeader, setSelectedLeader] = useState<any | null>(null);
-  const [allocationNotice, setAllocationNotice] = useState<string | null>(null);
-
   // -------------------------------------------------------------
   // COMPUTATION CORE (Growth, Trust Elasticity & Scenarios)
   // -------------------------------------------------------------
@@ -152,46 +148,6 @@ export default function GrowthSimulatorPage() {
     fxRate,
   ]);
 
-  // Leaders Directory for Dr. AIT
-  const leaders = [
-    {
-      name: "Namith DR",
-      handle: "@drait_lead",
-      location: "Dr. AIT Bangalore (CS)",
-      followers: 4120,
-      aum: currency === "INR" ? "₹42,00,000" : "$50,600",
-      roi: "+78.4%",
-      style: "Nvidia Earnings Momentum",
-    },
-    {
-      name: "Mallikarjun",
-      handle: "@drait_quant",
-      location: "Dr. AIT Alumni",
-      followers: 8940,
-      aum: currency === "INR" ? "₹98,00,000" : "$118,000",
-      roi: "+81.2%",
-      style: "Cross-DEX Arbitrage",
-    },
-    {
-      name: "Pruthvi Rao",
-      handle: "@macro_pruthvi",
-      location: "Dr. AIT FinTech Society",
-      followers: 2830,
-      aum: currency === "INR" ? "₹35,00,000" : "$42,100",
-      roi: "+74.5%",
-      style: "Tesla Robotaxi Macro",
-    },
-    {
-      name: "Dr. AIT Quant Node",
-      handle: "@drait_guru",
-      location: "Dr. AIT Hostel Block 1",
-      followers: 6190,
-      aum: currency === "INR" ? "₹56,00,000" : "$67,500",
-      roi: "+76.8%",
-      style: "High-Frequency Liquidity",
-    },
-  ];
-
   // Helper for SVG chart maximum scale
   const maxChartValue = useMemo(() => {
     if (activeMetric === "Revenue") {
@@ -223,13 +179,13 @@ export default function GrowthSimulatorPage() {
           <div className="max-w-3xl space-y-3">
             <div className="inline-flex items-center gap-2 rounded-full bg-[#67E5EE]/10 px-3.5 py-1 text-xs font-semibold text-[#67E5EE] border border-[#67E5EE]/30">
               <Sparkles className="h-3.5 w-3.5" />
-              <span>Track 2 · Dr. AIT Campus Macroeconomic Model</span>
+              <span>MochaTrade Macroeconomic Growth Model</span>
             </div>
             <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
               TradeX Labs · Macro Simulator
             </h1>
             <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed">
-              Parametric growth & pricing engine modeling how Dr. AIT's micro-syndicates compound retail trading volume via negative-CAC campus loops, automated -10% circuit breakers, and institutional-grade trust.
+              Parametric growth & pricing engine modeling how campus micro-syndicates compound retail trading volume via negative-CAC campus loops, automated -10% circuit breakers, and institutional-grade trust.
             </p>
           </div>
 
@@ -655,86 +611,11 @@ export default function GrowthSimulatorPage() {
         </div>
       </div>
 
-      {/* Layer 2: Dr. AIT Syndicate Directory (from app.py) */}
-      <div className="rounded-3xl border border-[#1E293B] bg-[#0E1424] p-6 sm:p-8 space-y-6 shadow-xl">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#1E293B] pb-4">
-          <div>
-            <h3 className="text-base font-bold text-white flex items-center gap-2">
-              <Users className="h-4 w-4 text-[#67E5EE]" />
-              Dr. AIT Syndicate Protocol Directory & Node Allocator
-            </h3>
-            <p className="text-xs text-[#94A3B8]">
-              Verified campus lead nodes managing institutional liquidity on MochaTrade
-            </p>
-          </div>
-          <Link
-            href="/"
-            className="text-xs font-semibold text-[#67E5EE] hover:underline flex items-center gap-1 self-start sm:self-auto"
-          >
-            Launch Retail Copy-Trader <ArrowUpRight className="h-3.5 w-3.5" />
-          </Link>
-        </div>
-
-        {allocationNotice && (
-          <div className="rounded-xl border border-[#48D297]/40 bg-[#48D297]/10 p-3.5 flex items-center justify-between text-xs text-[#48D297] animate-in fade-in">
-            <span className="flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4 shrink-0" />
-              {allocationNotice}
-            </span>
-            <button onClick={() => setAllocationNotice(null)} className="text-white hover:text-white/80">
-              Dismiss
-            </button>
-          </div>
-        )}
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {leaders.map((leader, i) => (
-            <div
-              key={i}
-              className="rounded-2xl border border-[#1E293B] bg-[#070A11] p-5 space-y-4 hover:border-[#67E5EE]/50 transition-all shadow-md group"
-            >
-              <div className="flex items-start justify-between">
-                <div>
-                  <h4 className="text-sm font-bold text-white group-hover:text-[#67E5EE] transition-colors">
-                    {leader.name}
-                  </h4>
-                  <span className="text-xs text-[#67E5EE] font-mono block">{leader.handle}</span>
-                  <span className="text-[11px] text-[#64748B] block mt-0.5">
-                    📍 {leader.location} · Strategy: <strong className="text-white">{leader.style}</strong>
-                  </span>
-                </div>
-                <div className="text-right">
-                  <span className="text-base font-black text-[#48D297] font-mono">{leader.roi}</span>
-                  <span className="text-[10px] text-[#64748B] block">Audited Win Rate</span>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between pt-3 border-t border-[#1E293B] text-xs">
-                <span className="text-[#94A3B8]">👥 {leader.followers.toLocaleString()} Campus Backers</span>
-                <span className="font-mono text-white font-semibold">Vault AUM: {leader.aum}</span>
-              </div>
-
-              <button
-                onClick={() => {
-                  setSelectedLeader(leader);
-                  setAllocationNotice(
-                    `Position modeled! Simulated ${currencySymbol}${currency === "INR" ? "5,000" : "60"} allocation into ${leader.handle}'s smart escrow vault.`
-                  );
-                }}
-                className="w-full rounded-xl border border-[#67E5EE]/30 bg-[#67E5EE]/10 hover:bg-[#67E5EE] hover:text-black py-2 text-xs font-bold text-[#67E5EE] transition-all flex items-center justify-center gap-1.5"
-              >
-                Simulate Allocation to {leader.handle} <ArrowRight className="h-3 w-3" />
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Assumptions & Mathematical Methodology Drawer */}
       <div className="rounded-3xl border border-[#1E293B] bg-[#070A11] p-6 sm:p-8 space-y-4">
         <h4 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
           <HelpCircle className="h-4 w-4 text-[#67E5EE]" />
-          Model Methodology & Track 2 Parameters
+          Model Methodology & Protocol Parameters
         </h4>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs text-[#94A3B8]">
           <div className="rounded-xl border border-[#1E293B] bg-[#0E1424] p-3.5 space-y-1">
@@ -743,7 +624,7 @@ export default function GrowthSimulatorPage() {
           </div>
           <div className="rounded-xl border border-[#1E293B] bg-[#0E1424] p-3.5 space-y-1">
             <span className="font-bold text-white block">Viral K-Factor (0.28)</span>
-            <p>Each active student trader on Dr. AIT campus brings 0.28 peer traders via hostel leagues and WhatsApp profit share cards.</p>
+            <p>Each active student trader in the campus network brings 0.28 peer traders via negative-CAC verified trade share receipts.</p>
           </div>
           <div className="rounded-xl border border-[#1E293B] bg-[#0E1424] p-3.5 space-y-1">
             <span className="font-bold text-white block">Fee Capture Mechanism</span>

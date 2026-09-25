@@ -33,7 +33,6 @@ export async function GET() {
 
     // If database has no user or no trades, return the rich mock portfolio
     if (!user || settlements.length === 0) {
-      console.log("Empty database state in portfolio API, returning Dr. AIT mock portfolio fallback");
       return NextResponse.json({
         success: true,
         data: DEFAULT_MOCK_PORTFOLIO,

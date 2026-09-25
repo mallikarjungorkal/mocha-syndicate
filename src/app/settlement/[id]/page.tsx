@@ -78,9 +78,9 @@ export default function SettlementPage({
   const isTakeProfit = position.exitReason === "TARGET_PROFIT";
   const isProfit = settlement.netPayout > settlement.initialPledge;
 
-  const referralLink = `https://mocha.trade/drait/priyanka_s`;
+  const referralLink = `https://mocha.trade/invite/priyanka_s`;
   const shareMessage = isCircuitBreaker
-    ? `🛡️ Tested Mocha Syndicate on NVDA 10x! Market dipped, but the -10% Circuit Breaker fired and refunded 90% (₹${settlement.netPayout.toFixed(2)}) straight to my UPI in 3.8s! No liquidation wipeouts. Join my Dr. AIT Hostel Block 1 cohort: ${referralLink}`
+    ? `🛡️ Tested Mocha Syndicate on NVDA 10x! Market dipped, but the -10% Circuit Breaker fired and refunded 90% (₹${settlement.netPayout.toFixed(2)}) straight to my UPI in 3.8s! No liquidation wipeouts. Join my campus trading cohort: ${referralLink}`
     : `🚀 Hit +18% on NVDA 10x with Mocha Syndicate! ₹${settlement.netPayout.toFixed(2)} settled straight to my UPI. Zero Telegram scammers, pure audited campus alpha. Join: ${referralLink}`;
 
   const handleCopyLink = () => {
@@ -259,7 +259,7 @@ export default function SettlementPage({
             <div className="rounded-2xl border-2 border-[#67E5EE]/40 bg-gradient-to-br from-[#070A11] via-[#0E1424] to-[#070A11] p-5 shadow-inner space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-[10px] font-black tracking-wider text-[#67E5EE] uppercase">
-                  MOCHA SYNDICATE · DR. AIT COHORT
+                  MOCHA SYNDICATE · VERIFIED SHIELD RECEIPT
                 </span>
                 <span className="rounded-full bg-[#48D297]/15 px-2 py-0.5 text-[9px] font-bold text-[#48D297] border border-[#48D297]/30">
                   VERIFIED AUDIT
@@ -291,7 +291,7 @@ export default function SettlementPage({
               </div>
 
               <div className="flex justify-between items-center text-[10px] text-[#94A3B8] pt-1">
-                <span>Trader: Priyanka S. (Hostel Block 1)</span>
+                <span>Trader: Priyanka S.</span>
                 <span className="font-mono text-[#67E5EE]">{settlement.upiRefundUtr}</span>
               </div>
             </div>

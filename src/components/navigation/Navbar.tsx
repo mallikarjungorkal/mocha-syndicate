@@ -10,7 +10,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-[#1E293B] bg-[#070A11]/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Brand & Track Info */}
+        {/* Brand & MarketSphere Info */}
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-2 group">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-tr from-[#67E5EE] via-[#22D3EE] to-[#FF914D] p-0.5 shadow-lg group-hover:scale-105 transition-transform">
@@ -23,17 +23,14 @@ export function Navbar() {
                 <span className="text-base font-extrabold tracking-tight text-white">
                   MOCHA<span className="text-[#67E5EE]">SYNDICATE</span>
                 </span>
-                <span className="hidden sm:inline-block rounded-full bg-[#1E293B] px-2 py-0.5 text-[10px] font-semibold text-[#67E5EE] border border-[#67E5EE]/30">
-                  Track 2
-                </span>
               </div>
-              <p className="text-[10px] text-[#94A3B8]">TradeX Labs · Dr. AIT MarketSphere</p>
+              <p className="text-[10px] text-[#94A3B8]">TradeX Labs · MarketSphere</p>
             </div>
           </Link>
         </div>
 
         {/* Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-1.5">
           <Link
             href="/"
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
@@ -65,17 +62,6 @@ export function Navbar() {
           >
             <Scale className="h-3 w-3 text-[#48D297]" />
             Strategy Benchmark
-          </Link>
-          <Link
-            href="/campus"
-            className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-              pathname === "/campus"
-                ? "bg-[#0E1424] text-[#FF914D] border border-[#FF914D]/30"
-                : "text-[#94A3B8] hover:text-[#FF914D] hover:bg-[#0E1424]/60"
-            }`}
-          >
-            <Flame className="h-3 w-3 text-[#FF914D]" />
-            Dr. AIT Leagues
           </Link>
           <Link
             href="/portfolio"

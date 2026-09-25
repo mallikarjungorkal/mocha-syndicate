@@ -1,6 +1,6 @@
-# MochaTrade Syndicate — Dr. AIT MarketSphere Edition
-> **Track 2: Growth & Monetization Strategy**  
-> **Team:** TradeX Labs | **Institution:** Dr. Ambedkar Institute of Technology (Dr. AIT), Bangalore
+# MochaTrade Syndicate — Catalyst Growth Engine
+> **Growth & Monetization Strategy Engine**  
+> **Team:** TradeX Labs
 
 [![Next.js 16](https://img.shields.io/badge/Next.js-16.3-black?logo=next.js)](https://nextjs.org)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind-CSS_v4-38B2AC?logo=tailwind-css)](https://tailwindcss.com)
@@ -23,14 +23,14 @@ Retail campus traders and first-time investors in India face three prohibitive b
 - **Pooled 10x Leverage**: Aggregates campus micro-tickets into institutional-sized liquidity positions.
 - **-10% Hard Circuit Breaker**: Mathematical auto-liquidation guard preserving **90% of principal capital**.
 - **Instant Webhook Settlement**: P&L and capital returned to user UPI accounts in **< 4.2 seconds**.
-- **Self-Sustaining Organic K-Factor (K = 1.34)**: Campus hostel leagues and shareable settlement receipts yield a negative-CAC viral acquisition loop.
+- **Self-Sustaining Organic K-Factor (K = 1.34)**: Campus leagues and shareable settlement receipts yield a negative-CAC viral acquisition loop.
 
 ---
 
 ## 🏗️ System Architecture & Workflow
 
 ```
-[Retail Student (Dr. AIT)] 
+[Retail Student Trader] 
        │ 1-Tap UPI (₹50 - ₹1,000)
        ▼
 [Non-Custodial Escrow Vault] 
@@ -72,7 +72,7 @@ The Next.js application contains the complete retail user journey plus the nativ
 # 1. Install dependencies
 npm install
 
-# 2. Database setup (pre-configured SQLite with Dr. AIT seed data)
+# 2. Database setup (pre-configured SQLite with collegiate seed data)
 npx prisma generate
 npx prisma db push
 npx prisma db seed
@@ -82,11 +82,11 @@ npm run dev
 ```
 
 Open **[http://localhost:3000](http://localhost:3000)** in your browser:
-- `/` — **Syndicate Discovery Hub & Active Trade Room**: Test 1-tap UPI pledges, real-time chart ticks, circuit breaker triggers, and simulated settlement.
+- `/` — **Syndicate Discovery Hub & Active Trade Room**: Test 1-tap UPI pledges, real-time chart ticks, circuit breaker triggers, and simulated settlement. Over 20 live syndicates with search, filter pills, trader names, campuses, and follower metrics.
 - `/simulator` — **Macroeconomic Growth Simulator**: Native interactive modeling of protocol take-rates, leader cuts, K-factors, trust architecture impact, and dual-scenario 12-month projections.
-- `/campus` — **Dr. AIT Campus League**: Live inter-hostel leaderboard (Hostel Block 1, Block 2, PG Scholars, FinTech Club).
+- `/campus` — **Campus League**: Live inter-collegiate leaderboard across top cohorts (IIT Bombay, BITS Pilani, RVCE, IIT Madras).
 - `/benchmark` — **Strategic Comparison**: Side-by-side breakdown of Scenario A vs Scenario B economics.
-- `/settlement/[id]` — **Settlement Receipt & Viral Share Card**: P&L receipt, verified UTR, and viral campus invite links (`mocha.trade/drait/[handle]`).
+- `/settlement/[id]` — **Settlement Receipt & Viral Share Card**: P&L receipt, verified UTR, and viral campus invite links (`mocha.trade/invite/[handle]`).
 
 ---
 
@@ -107,7 +107,7 @@ npm run simulator
 Open **[http://localhost:8501](http://localhost:8501)** to access:
 - **Interactive Monte-Carlo Parameters**: Protocol take-rate sliders, leader cuts, and viral multipliers.
 - **Dark Theme Plotly Analytics**: 12-month cumulative volume, annual fee projections, and trader churn sensitivity curves.
-- **Dr. AIT Campus Vault Directory**: Active vaults for `@drait_quant`, `@drait_lead`, and `@macro_pruthvi`.
+- **Campus Vault Directory**: Active vaults for `@namith_quant`, `@mallikarjun_alpha`, and `@macro_pruthvi`.
 
 ---
 
@@ -115,7 +115,7 @@ Open **[http://localhost:8501](http://localhost:8501)** to access:
 
 - **Frontend & App Framework**: Next.js 16 (Turbopack, React 19, Server & Client Components)
 - **Styling**: Tailwind CSS v4 with dark coffee/crypto palette (`#070A11`, `#0E1424`, `#67E5EE`, `#48D297`, `#FF914D`)
-- **Database & ORM**: Prisma 6.4 with SQLite (`dev.db`), pre-seeded with Dr. AIT campus student profiles and syndicates
+- **Database & ORM**: Prisma 6.4 with SQLite (`dev.db`), pre-seeded with collegiate student profiles and syndicates
 - **Icons**: Lucide React
 - **Macro Simulator**: Python 3.10+, Streamlit, Pandas, NumPy, Plotly Express
 - **Interactive Control Dock**: In-app Judge Simulation Dock for 1-tap demo resets, simulated price drops, stop-loss triggers, and sensitivity testing
@@ -124,11 +124,11 @@ Open **[http://localhost:8501](http://localhost:8501)** to access:
 
 ## 👥 Team & Attribution
 
-**TradeX Labs** — Dr. Ambedkar Institute of Technology (Dr. AIT), Bangalore
+**TradeX Labs**
 - **Lead Architect & Full-Stack**: TradeX Labs Team
-- **Product & Quantitative Modeling**: Dr. AIT FinTech Society
-- **Hackathon Track**: Track 2 (Growth & Monetization Strategy)
+- **Product & Quantitative Modeling**: TradeX Labs Quantitative Research
+- **Strategic Focus**: Growth & Monetization Strategy
 
 ---
 
-*Submitted for the Round 2 Working Prototype Evaluation.*
+*Submitted for Round 2 Working Prototype Evaluation.*
